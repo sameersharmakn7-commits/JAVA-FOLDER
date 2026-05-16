@@ -1,0 +1,45 @@
+public class SpiralPattern {
+
+    public static void main(String[] args) {
+
+        int n = 4;
+        int[][] arr = new int[n][n];
+
+        int rowStart = 0, rowEnd = n - 1;
+        int colStart = 0, colEnd = n - 1;
+
+        int num = 1;
+
+        while(num <= n * n) {
+
+            for(int i = colStart; i <= colEnd; i++) {
+                arr[rowStart][i] = num++;
+            }
+            rowStart++;
+
+            for(int i = rowStart; i <= rowEnd; i++) {
+                arr[i][colEnd] = num++;
+            }
+            colEnd--;
+
+            for(int i = colEnd; i >= colStart; i--) {
+                arr[rowEnd][i] = num++;
+            }
+            rowEnd--;
+
+            for(int i = rowEnd; i >= rowStart; i--) {
+                arr[i][colStart] = num++;
+            }
+            colStart++;
+        }
+
+        System.out.println("Spiral Pattern:");
+
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
+                System.out.print(arr[i][j] + "\t");
+            }
+            System.out.println();
+        }
+    }
+}
